@@ -33,11 +33,15 @@ if (isset($_POST['letters'])) {
     for ($i = 0; $i <$n; $i++) {
        $index = rand(0, strlen($characters) - 1);
        $randomString .= $characters[$index];
+       if ($i < $n - 1) {
+        $randomString .= ", ";
+       }
+
     }
      
 
   // Show the letters generated to the user
-    echo "The random letters generated are : "."<br/>".$randomString."<br/>"; 
+    echo "<p>The random letters generated are : $randomString <p>"; 
      
 
   // Show the form to the user

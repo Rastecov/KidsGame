@@ -34,6 +34,9 @@ if (isset($_POST['letters'])) {
     for ($i = 0; $i <$n; $i++) {
        $index = rand(0, strlen($characters) - 1);
        $randomString .= $characters[$index];
+     if ($i < $n - 1) {
+      $randomString .= ", ";
+     }
     }
      
 
