@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 
 ?>
 <html lang="en">
@@ -21,17 +23,27 @@ session_start();
             <li><a href="#">About US</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
-        <div>
-            <form action="includes/login.php" method ="post">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="pwd" placeholder="Password">
-                <button type="submit" name="login-submit">Login</button>
-            </form>
-            <a href="signup.php">Signup</a>
-            <form action="includes/logout.php" method ="post">
-               <button type="submit" name="logout-submit">Logout</button>
-            </form>
-        </div>
+
+
     </nav>
+
+
+    <?php
+        
+       
+           
+        echo '  <form action="includes/login_function.php " method ="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="pwd" placeholder="Password">
+        <button type="submit" name="login-submit">Login</button>
+    </form>
+    <a href="signup.php">Signup</a>';
+
+
+
+
+
+    
+?>
 
 </header>
