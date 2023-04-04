@@ -4,6 +4,8 @@ session_start();
 
 
 ?>
+
+<link rel ="stylesheet" href="style.css">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,31 +21,31 @@ session_start();
             <img src ="KidgameIMG.png" alt="logo">
         </a>
         <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#">About US</a></li>
-            <li><a href="#">Contact</a></li>
+            <a href="index.php">Dashboard</a>
+            <a href="#">About US</a>
+            <a href="#">Contact</a>
         </ul>
 
 
     </nav>
 
 
-    <?php
+
+
+   
         
-       
-           
-        echo '  <form action="includes/login_function.php " method ="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="pwd" placeholder="Password">
-        <button type="submit" name="login-submit">Login</button>
-    </form>
-    <a href="signup.php">Signup</a>';
+
+    
+
+
 
 
 
 
 
     
-?>
+
+
+
 
 </header>
