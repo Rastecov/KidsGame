@@ -20,11 +20,7 @@ session_start();
         <a href= "#">
             <img src ="KidgameIMG.png" alt="logo">
         </a>
-        <ul>
-            <a href="index.php">Dashboard</a>
-            <a href="#">About US</a>
-            <a href="#">Contact</a>
-        </ul>
+        
 
 
     </nav>

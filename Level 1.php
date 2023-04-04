@@ -1,5 +1,9 @@
+
+
 <?php
 // Check if form has been submitted
+
+require "header.php";
 if (isset($_POST['letters'])) {
   // User has submitted the form, check if numbers are in ascending order
   $input_letters = explode(",", $_POST['letters']);
@@ -51,6 +55,12 @@ if (isset($_POST['letters'])) {
     <input type="text" id="letters" name="letters">
     <button type="submit">Submit</button>
   </form>
+
+  
   <?php
 }
+
+echo' <form action="logout.php" method ="post">
+                <button type="submit" name="logout-submit">Logout</button>
+             </form>';
 ?>

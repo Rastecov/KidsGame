@@ -17,7 +17,7 @@ if(isset($_POST['login-submit'])){
           // log the user in
           session_start();
           $_SESSION['username'] = $username;
-          header("Location: login.php");
+          header("Location: ../Level 1.php");
           exit();
         } else {
           // display an error message
