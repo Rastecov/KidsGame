@@ -6,7 +6,12 @@ if(isset($_POST['login-submit'])){
      $password = $_POST['pwd'];
  
         
-       
+     if (empty($username) || empty($password)) {
+
+      header("Location: ../index.php?error=emptyfields&uid=" . $username);
+
+      exit();
+    }
         
         // query the database for the user
         $sql = "SELECT * FROM users WHERE userName='$username' AND userpassword='$password'";
@@ -21,8 +26,8 @@ if(isset($_POST['login-submit'])){
           exit();
         } else {
           // display an error message
-          echo "<p class ='error'> Invalid ID or Password<p> ";
-          header("Location: ../index.php");
+          
+          header("Location: ../index.php?error=Invalid ID or Password");
           
         }
         

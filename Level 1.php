@@ -60,7 +60,7 @@ if (isset($_POST['letters'])) {
   <?php
 }
 
-echo' <form action="logout.php" method ="post">
-                <button type="submit" name="logout-submit">Logout</button>
-             </form>';
+echo' <form action="includes/logout.php" method="post">
+<button class="logout-btn" type="submit" name="logout-submit">Logout</button>
+</form>';
 ?>
