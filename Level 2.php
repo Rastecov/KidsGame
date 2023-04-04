@@ -1,5 +1,10 @@
 <?php
 // Check if form has been submitted
+function redirectToLevel3() {
+  echo '<form method="post" action="level3.php">
+      <button type="submit">Proceed to Level 3</button>
+  </form>';
+}
 if (isset($_POST['letters'])) {
   // User has submitted the form, check if numbers are in ascending order
   $input_letters = explode(",", $_POST['letters']);
@@ -16,6 +21,8 @@ if (isset($_POST['letters'])) {
 
     if ($sorted_letterInput === implode(", ", $input_letters)) {
         echo "<p>You have won the game!</p>";
+        redirectToLevel3();
+
       } else {
         echo "<p>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
       }
@@ -47,7 +54,7 @@ if (isset($_POST['letters'])) {
   // Show the form to the user
   ?>
   <form method="post" action="">
-    <label for="letters">Enter the 6 letters in ascending order:</label>
+    <label for="letters">Enter the 6 letters in descending order:</label>
     <input type="text" id="letters" name="letters">
     <button type="submit">Submit</button>
   </form>
