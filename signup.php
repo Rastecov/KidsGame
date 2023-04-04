@@ -59,6 +59,7 @@ else if($_GET['error'] == "usertaken"){
             <button type ="submit" name="signup-submit">Signup</button>
                   
             </form>
+            <a href="index.php">Loging</a>;
         </section>
     </div>
 
