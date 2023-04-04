@@ -1,4 +1,15 @@
 <?php
+function redirectToLevel4() {
+  echo '<form method="post" action="level4.php">
+      <button type="submit">Proceed to Level 4</button>
+  </form>';
+}
+
+function backToLevel3() {
+  echo '<form method="post" action="level3.php">
+      <button type="submit">Back to Level 3</button>
+  </form>';
+}
 // Check if form has been submitted
 if (isset($_POST['numbers'])) {
   // User has submitted the form, check if numbers are in ascending order
@@ -7,12 +18,16 @@ if (isset($_POST['numbers'])) {
 
   if (count($input_numbers) != 6) {
     echo "<p>Please enter 6 numbers, separated by commas.</p>";
+    backToLevel3();
+
   } else {
     $sorted_input = implode(", ", $input_numbers);
     sort($input_numbers);
 
     if ($sorted_input === implode(", ", $input_numbers)) {
       echo "<p>You have won the game!</p>";
+      redirectToLevel4();
+
     } else {
       echo "<p>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
     }
