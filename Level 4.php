@@ -74,3 +74,7 @@ if (isset($_POST['numbers'])) {
   <?php
 }
 ?>
+<?php
+
+require "footer.php";
+?>
