@@ -86,3 +86,8 @@ if (isset($_POST['letters'])) {
 
 
 ?>
+
+<?php
+
+require "footer.php";
+?>
