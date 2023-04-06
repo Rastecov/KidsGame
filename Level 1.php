@@ -2,17 +2,27 @@
 require "header.php";
 
 function redirectToLevel2() {
-    echo '<form method="post" action="level2.php">
-        <button type="submit">Proceed to Level 2</button>
+    echo '<form method="post" action="level 2.php">
+        <button type="submit">Go the Level 2</button>
     </form>';
 }
+function backToLevel1() {
+    echo '<form method="post" action="level 1.php">
+        <button type="submit">Try Again this Level</button>
+    </form>';
+  }
+
+
+
+
 
 if (isset($_POST['letters'])) {
-    $input_letters = explode(",", $_POST['letters']);
+    $input_letters = explode(",", strtolower($_POST['letters']));
     $input_letters = array_map('trim', $input_letters);
 
     if (count($input_letters) != 6) {
         echo "<p>Please enter 6 letters, separated by commas.</p>";
+        backToLevel1();
     } else {
         $sorted_input_letters = $input_letters;
         sort($sorted_input_letters);
@@ -25,6 +35,29 @@ if (isset($_POST['letters'])) {
             redirectToLevel2();
         } else {
             echo "<p>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
+            
+            $_SESSION['lives']--;
+            
+            if ($_SESSION['lives'] == 0) {
+                echo "Game over. You ran out of lives.";
+                //storing the current username in the variable username
+                $username=$_SESSION['username'];
+                //deleting the data in all the session variables
+            session_unset();
+           //Storing the previously saved username in the new session variable username to be able to display the button logout
+           $_SESSION['username'] = $username;
+            
+            echo '<form method="post" action="Level 1.php">
+            <button type="submit">Start a new game Session Level</button>
+        </form>';
+            
+                
+            }else{
+                echo "Lives: " . $_SESSION['lives'] . "<br>";
+                backToLevel1();
+                
+            }
+            
         }
     }
 } else {
@@ -51,7 +84,5 @@ if (isset($_POST['letters'])) {
 <?php
 }
 
-echo '<form action="includes/logout.php" method="post">
-<button class="logout-btn" type="submit" name="logout-submit">Logout</button>
-</form>';
+
 ?>

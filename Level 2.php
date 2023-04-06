@@ -1,8 +1,14 @@
 <?php
+require "header.php";
 // Check if form has been submitted
 function redirectToLevel3() {
-  echo '<form method="post" action="level3.php">
-      <button type="submit">Proceed to Level 3</button>
+  echo '<form method="post" action="level 3.php">
+      <button type="submit">Go the Level 3</button>
+  </form>';
+}
+function backToLevel2() {
+  echo '<form method="post" action="level 2.php">
+      <button type="submit">Try Again this Level</button>
   </form>';
 }
 if (isset($_POST['letters'])) {
@@ -12,6 +18,7 @@ if (isset($_POST['letters'])) {
 
   if (count($input_letters) != 6) {
     echo "<p>Please enter 6 letters, separated by commas.</p>";
+    backToLevel2();
   } else {
 
     $sorted_letterInput = implode(", ", $input_letters);
@@ -25,6 +32,27 @@ if (isset($_POST['letters'])) {
 
       } else {
         echo "<p>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
+            
+        $_SESSION['lives']--;
+        
+        if ($_SESSION['lives'] == 0) {
+          echo "Game over. You ran out of lives.";
+                //storing the current username in the variable username
+                $username=$_SESSION['username'];
+                //deleting the data in all the session variables
+            session_unset();
+           //Storing the previously saved username in the new session variable username to be able to display the button logout
+           $_SESSION['username'] = $username;        
+        echo '<form method="post" action="Level 1.php">
+        <button type="submit">Start a new game Session Level</button>
+    </form>';
+        
+            
+        }else{
+            echo "Lives: " . $_SESSION['lives'] . "<br>";
+            backToLevel2();
+            
+        }
       }
 
  

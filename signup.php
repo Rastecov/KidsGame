@@ -29,13 +29,21 @@ else if($_GET['error'] == "invalidMail"){
 
     echo "<p class ='error'> You must add a valid Email!<p> ";
 }
+else if($_GET['error'] == "invalidfirstname"){
+
+    echo "<p class ='error'> Sorry, your first name cannot start with a digit or number<p> ";
+}
+else if($_GET['error'] == "invalidlastname"){
+
+    echo "<p class ='error'> Sorry, your last name cannot start with a digit or number<p> ";
+}
 else if($_GET['error'] == "NotTheSamePassword"){
 
-    echo "<p class ='error'> You must enter the same password<p> ";
+    echo "<p class ='error'> Sorry, you entered 2 different passwords.<p> ";
 }
 else if($_GET['error'] == "usertaken"){
 
-    echo "<p class ='error'> Username already exist in the database<p> ";
+    echo "<p class ='error'> Sorry, this username already exists. Please, choose another one.<p> ";
 }
 
 
@@ -50,16 +58,24 @@ else if($_GET['error'] == "usertaken"){
   
     ?>
             <form action =includes/signup_function.php method="post">
+            <label for="uid">Username:</label>
             <input type="text" name="uid" placeholder ="Username">
+            <label for="mail">Email:</label>
             <input type="text" name="mail" placeholder ="Email">
+            <label for="fName">Firstname:</label>
             <input type="text" name="fName" placeholder ="Firstname">
+            <label for="lName">Lastname:</label>
             <input type="text" name="lName" placeholder ="Lastname">
+            <label for="pwd">Password:</label>
             <input type ="password" name="pwd" placeholder ="Password">
+            <label for="Cpwd">Confirm Password:</label>
             <input type ="password" name="Cpwd" placeholder ="Confirm your Password">
-            <button type ="submit" name="signup-submit">Signup</button>
-                  
+            <button type ="submit" name="signup-submit">Create</button>   
             </form>
-            <a href="index.php">Loging</a>;
+            
+            <form action="index.php" method ="post">
+        <button type="submit" name="signin">Sign-In</button>
+        </form>
         </section>
     </div>
 

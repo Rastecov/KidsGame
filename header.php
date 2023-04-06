@@ -1,12 +1,11 @@
+<link rel ="stylesheet" href="style.css">
 <?php
 
 session_start();
-
-
-?>
-
-<link rel ="stylesheet" href="style.css">
-<html lang="en">
+if (!isset($_SESSION['lives'])) {
+    $_SESSION['lives'] = 2;
+}
+echo'<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,31 +16,22 @@ session_start();
     
 <header>
     <nav>
-        <a href= "#">
+        <a href= "index.php">
             <img src ="KidgameIMG.png" alt="logo">
         </a>
-        
 
-
-    </nav>
-
-
-
-
+    </nav> <br>';
+if(isset($_SESSION['username'])){
+ echo'<form method="post" action="includes/logout.php">
+ <button type="submit">Logout</button>
+</form>';
+}
+else{
    
-        
-
     
+}
 
-
-
-
-
-
-
-    
-
-
+?>
 
 
 </header>

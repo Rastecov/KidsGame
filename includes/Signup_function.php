@@ -23,7 +23,18 @@ if (isset($_POST['signup-submit'])) {
     } else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         header("Location: ../signup.php?error=invalidusername&mail=" . $email . "&firstname=" . $firstName . "&lastName=" . $lastname);
         exit();
-    } else if ($password !== $ConfirmPassword) {
+    } 
+    else if(is_numeric($firstName[0]) ) {
+
+        header("Location: ../signup.php?error=invalidfirstname");
+
+    }
+    else if(is_numeric($lastname[0]) ) {
+
+        header("Location: ../signup.php?error=invalidlastname");
+
+    }
+    else if ($password !== $ConfirmPassword) {
         header("Location: ../signup.php?error=NotTheSamePassword&uid=" . $username . "&mail=" . $email . "&firstname=" . $firstName . "&lastName=" . $lastname);
         exit();
     } else {
