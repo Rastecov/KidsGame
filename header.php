@@ -1,6 +1,6 @@
 <link rel ="stylesheet" href="style.css">
 <?php
-
+ require 'includes/database_handler.php';
 session_start();
 if (!isset($_SESSION['lives'])) {
     $_SESSION['lives'] = 2;

@@ -17,18 +17,11 @@ if($_GET['error'] == "emptyfields"){
     echo "<p class ='error'> You must fill all fields!!<p> ";
 }
 
-else if($_GET['error'] == "invalidusernameMail"){
-
-    echo "<p class ='error'> You must add a valid Email and Username!<p> ";
-}
 else if($_GET['error'] == "invalidusername"){
 
     echo "<p class ='error'> You must add a valid Username!<p> ";
 }
-else if($_GET['error'] == "invalidMail"){
 
-    echo "<p class ='error'> You must add a valid Email!<p> ";
-}
 else if($_GET['error'] == "invalidfirstname"){
 
     echo "<p class ='error'> Sorry, your first name cannot start with a digit or number<p> ";
@@ -60,8 +53,6 @@ else if($_GET['error'] == "usertaken"){
             <form action =includes/signup_function.php method="post">
             <label for="uid">Username:</label>
             <input type="text" name="uid" placeholder ="Username">
-            <label for="mail">Email:</label>
-            <input type="text" name="mail" placeholder ="Email">
             <label for="fName">Firstname:</label>
             <input type="text" name="fName" placeholder ="Firstname">
             <label for="lName">Lastname:</label>
