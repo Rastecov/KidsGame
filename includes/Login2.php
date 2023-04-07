@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['login-submit'])){
-    require 'database_handler.php';
+   
      // get the form data
      $username = $_POST['username'];
      $password = $_POST['pwd'];
