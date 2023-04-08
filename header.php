@@ -3,7 +3,7 @@
  
 session_start();
 if (!isset($_SESSION['lives'])) {
-    $_SESSION['lives'] = 2;
+    $_SESSION['lives'] = 6;
 }
 echo'<html lang="en">
 <head>

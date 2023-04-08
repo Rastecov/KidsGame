@@ -7,7 +7,7 @@
         <input type="password" name="Newpwd" placeholder="Password">
         <label for="Cpwd">Confirm Password:</label>
             <input type ="password" name="Cpwd" placeholder ="Confirm your Password"> 
-        <button type="submit" name="forgottenPass-submit">Change your password</button>
+        <button type="submit" name="forgottenPass-submit">Modify your password</button>
         </form>
 
         <form action="index.php" method ="post">

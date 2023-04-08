@@ -21,9 +21,9 @@
                         </div>
                         <div class="col-md-6">
                             <ul class="footer-links">
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Terms of Use</a>
-                                <a href="#">Sitemap</a>
+                                <a href="About the Game.php">About the Game</a>
+                                <a href="History.php">History</a>
+                                <a href="index.php">Home</a>
                             </ul>
                         </div>
                     </div>
