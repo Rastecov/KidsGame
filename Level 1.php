@@ -21,7 +21,7 @@ if (isset($_POST['letters'])) {
     $input_letters = array_map('trim', $input_letters);
 
     if (count($input_letters) != 6) {
-        echo "<p>Please enter 6 letters, separated by commas.</p>";
+        echo "<p class ='error'>Please enter 6 letters, separated by commas.</p>";
         backToLevel1();
     } else {
         $sorted_input_letters = $input_letters;
@@ -31,15 +31,15 @@ if (isset($_POST['letters'])) {
         echo "Your input: " . implode(", ", $input_letters) . "<br/>";
 
         if ($sorted_input_letters_str === implode(", ", $input_letters)) {
-            echo "<p>You have won the game!</p>";
+            echo "<p class='success'>You have won the game!</p>";
             redirectToLevel2();
         } else {
-            echo "<p>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
+            echo "<p class ='error'>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
             
             $_SESSION['lives']--;
             
             if ($_SESSION['lives'] == 0) {
-                echo "Game over. You ran out of lives.";
+                echo "<p class ='error'>Game over. You ran out of lives.</p>";
                 //storing the current username in the variable username
                 $username=$_SESSION['username'];
                 //deleting the data in all the session variables
@@ -81,6 +81,9 @@ if (isset($_POST['letters'])) {
         <input type="text" id="letters" name="letters">
         <button type="submit">Submit</button>
     </form>
+
+
+    
 <?php
 }
 

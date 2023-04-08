@@ -21,9 +21,7 @@
                         </div>
                         <div class="col-md-6">
                             <ul class="footer-links">
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Terms of Use</a>
-                                <a href="#">About the game</a>
+
                             </ul>
                         </div>
                     </div>
