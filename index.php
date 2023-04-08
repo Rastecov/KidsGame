@@ -8,19 +8,41 @@ require "header.php";
     <div class="wrapper-main">
         <section class="section-default">
             <?php
+            
+
+           
+
             if(isset($_GET['error'])){
 
                 if($_GET['error'] == "emptyfields"){
 
                     echo "<p class ='error'> You must fill all fields!!<p> ";
                     
+                } 
+                
+
+                if($_GET['error'] == "NoUser"){
+
+                    echo "<p class ='error'> Sorry, you entered a wrong Username or Password! <p> ";
                 }
 
-                if($_GET['error'] == "Invalid ID or Password"){
+                if($_GET['error'] == "InvalidPassword"){
 
-                    echo "<p class ='error'> Sorry, you entered a wrong Username or Password!”, <p> ";
+                    // Prompt the forgotten link
+                     echo'<a href="includes/Forgotten_Password.php">Forgotten? Please, change your password.</a>';
+        
                 }
 
+               
+
+            }
+
+            if(isset($_GET['success'])){ 
+                if($_GET['success'] == "Passchanged"){
+
+                    echo "<p class ='success'> Password changed sucessfully<p> ";
+                }
+                
             }
           
             
