@@ -33,7 +33,7 @@ if (isset($_POST['signup-submit'])) {
             $result = $conn->query("SELECT * FROM player WHERE userName='$username'");
             $count_row = $result->num_rows;
             if ($count_row > 0) {
-                header("Location: ../signup.php?error=usertaken&mail=" . "&firstname=" . $firstName . "&lastName=" . $lastname);
+                header("Location: ../signup.php?error=usertaken" . "&firstname=" . $firstName . "&lastName=" . $lastname);
                 exit();
             } else {
                
