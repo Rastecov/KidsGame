@@ -36,19 +36,24 @@ if (isset($_POST['signup-submit'])) {
                 header("Location: ../signup.php?error=usertaken" . "&firstname=" . $firstName . "&lastName=" . $lastname);
                 exit();
             } else {
-               
+                // Insert the new player into the player table
                 $conn->query("INSERT INTO player(fName, lName, userName, registrationTime) VALUES ('$firstName', '$lastname', '$username', '$current_dateTime')");
-                $user_rank_result = $conn->query("SELECT player.registrationOrder FROM player");
+        
+                // Retrieve the registration order from the player table
+                $user_rank_result = $conn->query("SELECT registrationOrder FROM player WHERE userName='$username'");
                 $user_rank = $user_rank_result->fetch_assoc()['registrationOrder'];
+                // Insert the new player into the authenticator table with the correct registration order
                 $conn->query("INSERT INTO authenticator(passCode,registrationOrder) VALUES('$password', '$user_rank')");
+        
                 header("Location: ../signup.php?Signup=success");
-                exit();
+               
+                exit();            
             }
         } else {
-
             header("Location: ../signup.php?error=sqlerror");
             exit();
         }
+        
     }
 
     $conn->close();
