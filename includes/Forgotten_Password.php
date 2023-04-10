@@ -1,22 +1,13 @@
 
 <link rel ="stylesheet" href="../style.css">
-<form action="Forgotten_Password.php" method ="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" placeholder="Username">
-        <label for="pwd">Password:</label>
-        <input type="password" name="Newpwd" placeholder="Password">
-        <label for="Cpwd">Confirm Password:</label>
-            <input type ="password" name="Cpwd" placeholder ="Confirm your Password"> 
-        <button type="submit" name="forgottenPass-submit">Modify your password</button>
-        </form>
 
-        <form action="index.php" method ="post">
-        <button type="submit" name="signin">Sign-In</button>
-        </form>
+
 
 <?php
 
+
 require 'database_handler.php';
+
 
 
 
@@ -90,4 +81,30 @@ else if($_GET['error'] == "NotTheSamePassword"){
 
 
 }
+?>
 
+<header>
+    <nav>
+        <a href= "index.php">
+            <img src ="../KidgameIMG.png" alt="logo">
+        </a>
+</header>
+
+<main>
+
+
+<form action="Forgotten_Password.php" method ="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+        <label for="pwd">Password:</label>
+        <input type="password" name="Newpwd" placeholder="Password">
+        <label for="Cpwd">Confirm Password:</label>
+            <input type ="password" name="Cpwd" placeholder ="Confirm your Password"> 
+        <button type="submit" name="forgottenPass-submit">Modify your password</button>
+        </form>
+
+        <form action="../index.php" method ="post">
+        <button type="submit" name="signin">Sign-In</button>
+        </form>
+
+        </main>
