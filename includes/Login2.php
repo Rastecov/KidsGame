@@ -11,34 +11,25 @@ if (isset($_POST['login-submit'])) {
         header("Location: ../index.php?error=emptyfields&uid=" . $username);
         exit();
     }
-
-    // query the database for the user credentials
     $sql = "SELECT player.userName, authenticator.passCode
-            FROM player
-            INNER JOIN authenticator ON player.registrationOrder = authenticator.registrationOrder
-            WHERE player.userName = '$username' AND authenticator.passCode = '$password'";
+    FROM player
+    INNER JOIN authenticator ON player.registrationOrder = authenticator.registrationOrder
+    WHERE player.userName = '$username'";
     $result = mysqli_query($conn, $sql);
-    // query the database to see if the username of the user exist 
-    $sql2= "SELECT player.userName
-     FROM player
-     WHERE player.userName = '$username'";
-    $result2= mysqli_query($conn, $sql2);
     // check if the user was found
     if ($result->num_rows > 0) {
-        // log the user in
-        session_start();
-        $_SESSION['username'] = $username;
-        header("Location: ../Level 1.php");
-        exit();
-         // check if the user was found
-    }else if($result2->num_rows > 0 ){
-      
-        
-        header("Location: ../index.php?error=InvalidPassword");
-        exit();
-        
-    }
-     else {
+        $row = mysqli_fetch_assoc($result);
+        $hash =  base64_decode($row['passCode']);
+        if (password_verify($password, $hash)) {
+            session_start();
+            $_SESSION['username'] = $username;
+            header("Location: ../Level 1.php");
+            exit();        
+        } else {
+            header("Location: ../index.php?error=InvalidPassword");
+            exit();        
+        }
+    } else {
         // display an error message
         header("Location: ../index.php?error=NoUser");
         exit();

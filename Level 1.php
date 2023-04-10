@@ -30,6 +30,7 @@ if (isset($_POST['letters'])) {
 
         if ($sorted_input_letters_str === implode(", ", $input_letters)) {
             echo "<p class='success'>You have won the game!</p>";
+            $_SESSION['level'] = 'incomplete';
             redirectToLevel2();
         } else {
             echo "<p class ='error'>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
@@ -39,6 +40,7 @@ if (isset($_POST['letters'])) {
             if ($_SESSION['lives'] == 0) {
                 echo "<p class ='error'>Game over. You ran out of lives.</p>";
                 $username = $_SESSION['username'];
+                $_SESSION['level'] = 'failure';
                 session_unset();
                 $_SESSION['username'] = $username;
 

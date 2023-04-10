@@ -47,6 +47,7 @@ $result2= mysqli_query($conn, $sql2);
         $registrationOrder_result = $conn->query("SELECT player.registrationOrder FROM player WHERE player.userName = '$username'");
         if ($registrationOrder_result->num_rows > 0) {
             $registrationOrder = $registrationOrder_result->fetch_assoc()['registrationOrder'];
+            $Newpassword = base64_encode(password_hash($Newpassword, PASSWORD_BCRYPT, ["cost" => 12]));
             $conn->query("UPDATE authenticator SET passCode='$Newpassword' WHERE registrationOrder='$registrationOrder'");
             header("Location: ../index.php?success=Passchanged");
             exit();
