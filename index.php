@@ -1,3 +1,19 @@
+<head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+
+
 <?php
 
 require "header.php";
@@ -14,36 +30,32 @@ require "header.php";
 
             if(isset($_GET['error'])){
 
-                if($_GET['error'] == "emptyfields"){
-
-                    echo "<p class ='error'> You must fill all fields!!<p> ";
-                    
-                } 
                 
+            if(isset($_GET['error'])){
 
-                if($_GET['error'] == "NoUser"){
-
-                    echo "<p class ='error'> Sorry, you entered a wrong Username or Password! <p> ";
+                if ($_GET['error'] == "emptyfields") {
+                    echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">You must fill all fields!!</div></div>';
                 }
+                if ($_GET['error'] == "NoUser") {
+                    echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">Sorry, you entered a wrong Username or Password!</div></div>';
+                }
+                if ($_GET['error'] == "InvalidPassword") {
+                    echo '<div class="toast alert-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Alert</strong></div><div class="toast-body"></div></div>';
+                    echo'<a href="includes/Forgotten_Password.php">Forgotten? Please, change your password.</a>';
 
-                if($_GET['error'] == "InvalidPassword"){
-
-                    // Prompt the forgotten link
-                     echo'<a href="includes/Forgotten_Password.php">Forgotten? Please, change your password.</a>';
-        
+               
                 }
 
                
-
-            }
-
-            if(isset($_GET['success'])){ 
-                if($_GET['success'] == "Passchanged"){
-
-                    echo "<p class ='success'> Password changed sucessfully<p> ";
-                }
                 
             }
+        }
+            if(isset($_GET['success'])){
+            if ($_GET['success'] == "Passchanged") {
+                echo '<div class="toast success-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Success</strong></div><div class="toast-body">Password changed successfully</div></div>';
+            }
+        }
+                    
           
             
             ?>
@@ -65,7 +77,16 @@ require "header.php";
     </div>
 </main>
 
+<script>
+    $(document).ready(function(){
+        $('.toast').toast('show');
+    });
+</script>
+
+
 <?php
 
 require "footer.php";
 ?>
+
+</body>
