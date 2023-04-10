@@ -36,24 +36,22 @@ if (isset($_POST['signup-submit'])) {
                 header("Location: ../signup.php?error=usertaken" . "&firstname=" . $firstName . "&lastName=" . $lastname);
                 exit();
             } else {
-                // Insert the new player into the player table
-                $conn->query("INSERT INTO player(fName, lName, userName, registrationTime) VALUES ('$firstName', '$lastname', '$username', '$current_dateTime')");
-        
-                // Retrieve the registration order from the player table
-                $user_rank_result = $conn->query("SELECT registrationOrder FROM player WHERE userName='$username'");
-                $user_rank = $user_rank_result->fetch_assoc()['registrationOrder'];
-                // Insert the new player into the authenticator table with the correct registration order
-                $conn->query("INSERT INTO authenticator(passCode,registrationOrder) VALUES('$password', '$user_rank')");
-        
-                header("Location: ../signup.php?Signup=success");
                
-                exit();            
+                $conn->query("INSERT INTO player(fName, lName, userName, registrationTime) VALUES ('$firstName', '$lastname', '$username', '$current_dateTime')");
+                $user_rank_result = $conn->query("SELECT MAX(registrationOrder) AS max_order FROM player");
+                $user_rank = $user_rank_result->fetch_assoc()['max_order'];
+                $password = base64_encode(password_hash($password, PASSWORD_BCRYPT, ["cost" => 12]));
+                $conn->query("INSERT INTO authenticator(passCode) VALUES('$password')");
+                $conn->query("UPDATE authenticator SET registrationOrder='$user_rank' WHERE passCode='$password'");
+
+                header("Location: ../signup.php?Signup=success");
+                exit();
             }
         } else {
+
             header("Location: ../signup.php?error=sqlerror");
             exit();
         }
-        
     }
 
     $conn->close();

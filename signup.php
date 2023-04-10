@@ -44,6 +44,7 @@ else if($_GET['error'] == "usertaken"){
 
     }
     else if (isset($_GET['Signup'])){
+       
             echo "<p class ='success'> Data saved<p> ";
         
     } 

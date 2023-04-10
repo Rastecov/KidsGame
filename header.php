@@ -5,6 +5,9 @@ session_start();
 if (!isset($_SESSION['lives'])) {
     $_SESSION['lives'] = 6;
 }
+
+$_SESSION['level'] = 'failure';
+
 echo'<html lang="en">
 <head>
     <meta charset="UTF-8">
