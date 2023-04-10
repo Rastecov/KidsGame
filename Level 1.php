@@ -1,5 +1,9 @@
 <?php
 
+ 
+ ?>
+        <?php
+
 require "header.php";
 
 function redirectToLevel2() {
@@ -18,45 +22,72 @@ if (isset($_POST['letters'])) {
     $input_letters = explode(",", strtolower($_POST['letters']));
     $input_letters = array_map('trim', $input_letters);
 
+    // Validate that all input letters are different than the ones displayed
     if (count($input_letters) != 6) {
         echo "<p class ='error'>Please enter 6 letters, separated by commas.</p>";
         backToLevel1();
     } else {
-        $sorted_input_letters = $input_letters;
-        sort($sorted_input_letters);
-        $sorted_input_letters_str = implode(", ", $sorted_input_letters);
+        // Check if any of the entered letters match any of the displayed letters
+        $displayed_letters = explode(", ", $_SESSION['letters']);
+        foreach ($input_letters as $letter) {
+            if (in_array($letter, $displayed_letters)) {
+               
 
-        echo "Your input: " . implode(", ", $input_letters) . "<br/>";
+                $sorted_input_letters = $input_letters;
+            sort($sorted_input_letters);
+            $sorted_input_letters_str = implode(", ", $sorted_input_letters);
 
-        if ($sorted_input_letters_str === implode(", ", $input_letters)) {
-            echo "<p class='success'>You have won the game!</p>";
-            $_SESSION['level'] = 'incomplete';
-            redirectToLevel2();
-        } else {
-            echo "<p class ='error'>Sorry, the numbers you entered did not match the sorted numbers. Please try again.</p>";
+            echo "Your input: " . implode(", ", $input_letters) . "<br/>";
+           
 
-            $_SESSION['lives']--;
-
-            if ($_SESSION['lives'] == 0) {
-                echo "<p class ='error'>Game over. You ran out of lives.</p>";
-                $username = $_SESSION['username'];
-                $_SESSION['level'] = 'failure';
-                session_unset();
-                $_SESSION['username'] = $username;
-
-                echo '<form method="post" action="Level 1.php">
-                        <button type="submit">Start a new game Session Level</button>
-                    </form>';
-
+            // Validate if all the input letters match the sorted letters
+            if ($sorted_input_letters_str === implode(", ", $input_letters)) {
+                echo "<p class='success'>You have won the game!</p>";
+                $_SESSION['level'] = 'incomplete';
+                redirectToLevel2();
+                break;
             } else {
-                echo "Lives: " . $_SESSION['lives'] . "<br>";
-                backToLevel1();
+                echo "<p class ='error'>Sorry, the letters you entered did not match the sorted letters. Please try again.</p>";
+
+                $_SESSION['lives']--;
+                
+
+                if ($_SESSION['lives'] == 0) {
+                    echo "<p class ='error'>Game over. You ran out of lives.</p>";
+                    $username = $_SESSION['username'];
+                    $_SESSION['level'] = 'failure';
+                    session_unset();
+                    $_SESSION['username'] = $username;
+                    break;
+
+                    echo '<form method="post" action="Level 1.php">
+                            <button type="submit">Start a new game Session Level</button>
+                        </form>';
+
+                } else {
+                    echo "Lives: " . $_SESSION['lives'] . "<br>";
+                    backToLevel1();
+                    break;
+
+                }
 
             }
+            }else{
+                echo "<p class='error'>Please enter letters that are not different from the ones displayed.</p>";
+                backToLevel1();
+                exit();
 
+
+            }
+        
+    
+        
+            
         }
     }
-} else {
+}
+    
+ else {
     if (isset($_SESSION['letters'])) {
         // Use the previously generated letters
         $randomString = $_SESSION['letters'];
