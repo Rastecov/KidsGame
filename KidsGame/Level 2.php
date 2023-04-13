@@ -1,15 +1,29 @@
 <?php
 require "header.php";
+if(isset($_GET['error'])){
+    if ($_GET['error'] == "Notpermittedaction") {
+        echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">You are not permitted access to that Level yet. Please finish your current level first!!</div></div>';
+    }
+} 
+
+
+if (isset($_SESSION['username'])) {
+    if($_SESSION['levelCheck']==='completed'){
+        
 function redirectToLevel3() {
+   
   echo '<form method="post" action="level 3.php">
       <button type="submit">Go the Level 3</button>
   </form>';
+      
 }
 
 function backToLevel2() {
-  echo '<form method="post" action="level 2.php">
+   
+         echo '<form method="post" action="level 2.php">
       <button type="submit">Try Again this Level</button>
-  </form>';
+        </form>';
+      
 }
 
 if (isset($_POST['letters'])) {
@@ -41,7 +55,10 @@ if (isset($_POST['letters'])) {
 
             // Validate if all the input letters match the sorted letters
             if ($sorted_input_letters_str === implode(", ", $input_letters)) {
-                echo "<p class='success'>You have won the game!</p>";
+                echo "<p class='success'>You have successfully  odered these letters in descending order</p>";
+                //freeing the session variable letters before going to the next level to generate new values
+                unset($_SESSION["letters"]);
+                $_SESSION['levelCheck']='completed';
                 $_SESSION['level'] = 'incomplete';
                 redirectToLevel3();
                 
@@ -55,7 +72,7 @@ if (isset($_POST['letters'])) {
                     echo "<p class ='error'>Game over. You ran out of lives.</p>";
                     $username = $_SESSION['username'];
                     $_SESSION['level'] = 'failure';
-                    session_unset();
+                   
                     $_SESSION['username'] = $username;
                     
 
@@ -70,7 +87,8 @@ if (isset($_POST['letters'])) {
             }
         }
     }
-} else {if (isset($_SESSION['letters'])) {
+} else {
+    if (isset($_SESSION['letters'])) {
   // Use the previously generated letters
   $randomString = $_SESSION['letters'];
 } else {
@@ -90,16 +108,30 @@ if (isset($_POST['letters'])) {
   $_SESSION['letters'] = $randomString;
 }
 
-echo "<p>The random letters generated are: $randomString</p>";
+echo "<p id='letters-label'>The random letters generated are: $randomString</p>";
 ?>
 <form method="post" action="">
-  <label for="letters">Enter the 6 letters in descending order:</label>
+  <label for='letters' id='letters-label'>Level 2:Enter the 6 letters in descending order:</label>
   <input type="text" id="letters" name="letters">
   <button type="submit">Submit</button>
 </form>
 
 <?php
+    }
+}else{
+
+    header("Location: Level 1.php?error=Notpermittedaction");
+}
+} else {
+
+    echo "<p class='error'> You need to login first, Sign in below!!</p>";
+
+
+    echo '<form action="index.php" method ="post">
+    <button type="submit" name="signin">Sign-In</button>
+    </form>';
 }
 
-require "footer.php";
+require 'footer.php';
+
 ?>
