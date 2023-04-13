@@ -1,15 +1,17 @@
 <?php
 require "header.php";
+
 if(isset($_GET['error'])){
     if ($_GET['error'] == "Notpermittedaction") {
         echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">You are not permitted access to that Level yet. Please finish your current level first!!</div></div>';
     }
 } 
 
-
+// checks if the session variable 'username' when the user is log into the game else display an error message.
 if (isset($_SESSION['username'])) {
     if($_SESSION['levelCheck']==='completed'){
         
+ // This function displays a form that submits to level 2 when the user clicks on the button.       
 function redirectToLevel3() {
    
   echo '<form method="post" action="level 3.php">
@@ -17,7 +19,7 @@ function redirectToLevel3() {
   </form>';
       
 }
-
+// This function displays a form that submits to level 1 when the user clicks on the button.
 function backToLevel2() {
    
          echo '<form method="post" action="level 2.php">
@@ -25,7 +27,8 @@ function backToLevel2() {
         </form>';
       
 }
-
+        
+// checks if the user has submitted the form  input letters
 if (isset($_POST['letters'])) {
 
     $input_letters = explode(",", strtolower($_POST['letters']));
@@ -67,7 +70,7 @@ if (isset($_POST['letters'])) {
 
                 $_SESSION['lives']--;
 
-
+                //check if lives have run out then display the appropriate message
                 if ($_SESSION['lives'] == 0) {
                     echo "<p class ='error'>Game over. You ran out of lives.</p>";
                     $username = $_SESSION['username'];
@@ -80,6 +83,7 @@ if (isset($_POST['letters'])) {
                             <button type="submit">Start a new game Session Level</button>
                         </form>';
                 } else {
+                    //displaying the user current number of live
                     echo "Lives: " . $_SESSION['lives'] . "<br>";
                     backToLevel2();
                     
@@ -95,7 +99,7 @@ if (isset($_POST['letters'])) {
   $n = 6;
   $characters = 'abcdefghijklmnopqrstuvwxyz';
   $randomString = '';
-
+//Generate 6 letters from the string character
   for ($i = 0; $i < $n; $i++) {
       $index = rand(0, strlen($characters) - 1);
       $randomString .= $characters[$index];
