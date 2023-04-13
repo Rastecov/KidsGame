@@ -127,7 +127,8 @@ echo "<p id='letters-label'>The random letters generated are: $randomString</p>"
     header("Location: Level 1.php?error=Notpermittedaction");
 }
 } else {
-
+    
+    //displaying the error message for the user to log in first
     echo "<p class='error'> You need to login first, Sign in below!!</p>";
 
 
