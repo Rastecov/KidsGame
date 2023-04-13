@@ -58,7 +58,7 @@ require "header.php";
             <ul>
                 <li>Boko Eraste Yacov Jesumen - Lead Developer</li>
                 <li>Voskerchyan Gagik - Graphics Designer</li>
-                <li>Wang Yucheng - Database administrator</li>
+                <li>Weixuan Li - Database administrator</li>
                 <li>Wang Yucheng - Game Level Designer</li>
             </ul>
         </section>
