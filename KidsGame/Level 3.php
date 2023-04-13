@@ -1,5 +1,6 @@
 <?php
 require "header.php";
+
 if(isset($_GET['error'])){
     if ($_GET['error'] == "Notpermittedaction") {
         echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">You are not permitted access to that Level yet. Please finish your current level first!!</div></div>';
