@@ -1,33 +1,3 @@
-<?php
-    require "header.php";
-    //checks if the 'error' parameter was passed in the URL and if it has the value 'Notpermittedaction', and displays an error message
-    if(isset($_GET['error'])){
-        if ($_GET['error'] == "Notpermittedaction") {
-            echo '<div class="toast error-toast" data-autohide="false" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Error</strong></div><div class="toast-body">You are not permitted access to that Level yet. Please finish your current level first!!</div></div>';
-        }
-    } 
-
-    // checks if the session variable username is set when the user is log into the game else display an error message.
-
-    if (isset($_SESSION['username'])) {
-        if($_SESSION['levelCheck']==='completed'){
-            
-    function redirectToLevel3() {
-       
-      echo '<form method="post" action="level 3.php">
-          <button type="submit">Go the Level 3</button>
-      </form>';
-          
-    }
-    
-    function backToLevel2() {
-       
-             echo '<form method="post" action="level 2.php">
-          <button type="submit">Try Again this Level</button>
-            </form>';
-          
-    }
-    
 
 // checks if the user has submitted the form  input letters
 if (isset($_POST['letters'])) {
@@ -137,7 +107,8 @@ echo "<p id='letters-label'>The random letters generated are: $randomString</p>"
     header("Location: Level 1.php?error=Notpermittedaction");
 }
 } else {
-
+    
+    //displaying the error message for the user to log in first
     echo "<p class='error'> You need to login first, Sign in below!!</p>";
 
 
@@ -149,6 +120,3 @@ echo "<p id='letters-label'>The random letters generated are: $randomString</p>"
 require 'footer.php';
 
 ?>
-
-
-
