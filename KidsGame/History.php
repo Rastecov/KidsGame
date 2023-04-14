@@ -9,11 +9,14 @@
     <main>
 <?php
 require "header.php";
-// add the header.php file
-// this file contains the navigation bar and the session start
-require 'includes/database_handler.php'; 
 // add the database_handler.php file
 // this file contains the connection to the database
+require 'includes/database_handler.php';
+$dbHandler = DataBaseHandler::DbConnection();
+            $dbHandler->DbOpenConnection();
+            $dbHandler->connectToDB("kidsgamesdb");
+            $conn = $dbHandler->getDataBase();
+
 
 // check if the user is logged in
 if(isset($_SESSION['username'])){

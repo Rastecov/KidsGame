@@ -1,9 +1,11 @@
 <?php
+//add the file name database_handler.php
+// this file contains the connection to the database
+require_once 'database_handler.php';
+
 // check if the user submitted the signup form
 if (isset($_POST['signup-submit'])) {
-    // add the file name database_handler.php
-    // this file contains the connection to the database
-    require 'database_handler.php';
+    
 
  // get the form data
     $username = $_POST['uid'];
@@ -38,6 +40,13 @@ if (isset($_POST['signup-submit'])) {
         header("Location: ../signup.php?error=NotTheSamePassword&uid=" . $username . "&firstname=" . $firstName . "&lastName=" . $lastname);
         exit();
     } else {
+
+        $dbHandler = DataBaseHandler::DbConnection();
+            $dbHandler->DbOpenConnection();
+            $dbHandler->connectToDB("kidsgamesdb");
+            $conn = $dbHandler->getDataBase();
+               
+
         // check if the player and authenticator tables exist in the database
 
         if ($conn->query("DESC player;") == true && $conn->query("DESC authenticator;") == true) {
@@ -49,7 +58,8 @@ if (isset($_POST['signup-submit'])) {
                 header("Location: ../signup.php?error=usertaken" . "&firstname=" . $firstName . "&lastName=" . $lastname);
                 exit();
             } else {
-               
+
+                
                 $conn->query("INSERT INTO player(fName, lName, userName, registrationTime) VALUES ('$firstName', '$lastname', '$username', '$current_dateTime')");
                 //get the maximum registration order from the player table as the user rank
                 $registration_result = $conn->query("SELECT MAX(registrationOrder) AS max_order FROM player");

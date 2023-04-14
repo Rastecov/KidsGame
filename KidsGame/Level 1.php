@@ -9,7 +9,7 @@
         }
     } 
 
-    // checks if the session variable 'username' when the user is log into the game else display an error message.
+    // checks if the session variable username is set when the user is log into the game else display an error message.
 
 if (isset($_SESSION['username'])) {
     // This function displays a form that submits to level 2 when the user clicks on the button.
@@ -28,7 +28,7 @@ function backToLevel1() {
 // checks if the user has submitted the form  input letters
 if (isset($_POST['letters'])) {
 
-     // Slits the input letters by comma and makes them all lowercase.
+     // Split the input letters by comma and makes them all lowercase.
     $input_letters = explode(",", strtolower($_POST['letters']));
     // Removes any leading or trailing whitespace from the input letters.
     $input_letters = array_map('trim', $input_letters);
@@ -46,7 +46,7 @@ if (isset($_POST['letters'])) {
             exit();
         } else {
 
-            //declaring a global variable $input_letters and assignsto  it the value of the input letters.           
+            //declaring a global variable $input_letters and assigns to it the value of the input letters.           
          global $input_letters;
             $sorted_input_letters = $input_letters;
              //sorts the input letters in ascending order.
@@ -69,7 +69,7 @@ if (isset($_POST['letters'])) {
                 redirectToLevel2();
                 
             } else {
-                //error message if the user haven't sorted the array in a good order
+                //error message if the user haven't sorted the letters in a good order
                 echo "<p class ='error'>Sorry, the letters you entered did not match the sorted letters. Please try again.</p>";
                 //decreasing user  lives by 1
                 $_SESSION['lives']--;

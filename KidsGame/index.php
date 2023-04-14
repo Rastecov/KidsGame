@@ -10,6 +10,8 @@
             
 
             require "header.php";
+            require "includes/database_handler.php"; 
+
             
             //checks if any errors or success messages has passed through the URL parameters then return the appropriated message              
             if(isset($_GET['error'])){

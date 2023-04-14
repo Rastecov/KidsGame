@@ -1,12 +1,14 @@
 
 <link rel ="stylesheet" href="../style.css">
 
-
-
 <?php
-
 //add the file name database_handler.php
+// this file contains the connection to the database
 require 'database_handler.php';
+$dbHandler = DataBaseHandler::DbConnection();
+            $dbHandler->DbOpenConnection();
+            $dbHandler->connectToDB("kidsgamesdb");
+            $conn = $dbHandler->getDataBase();
 
 
 
