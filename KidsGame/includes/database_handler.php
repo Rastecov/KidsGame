@@ -1,59 +1,56 @@
 <?php
-//definning server connection variable
-$servername= "localhost";
-$dBusername= 'root';
-$dBPassword = "";
-$DBNmae= "";
 
-// create a connection to the server
-$conn = mysqli_connect($servername, $dBusername,$dBPassword);
 
-//check if the connection is successful if not error message 
-if(!$conn){
+class DataBaseHandler {
+// Definning Server properties 
+    private $servername;
+private $dBusername;
+private $dBPassword;
+private $DBNmae;
 
-    die("Connection failed: ".mysqli_connect_error());
-}else{
-    //create database  kidsgamesdb if it does not exist
-    $conn->query("CREATE DATABASE IF NOT EXISTS kidsgamesdb;");
-    mysqli_select_db($conn, 'kidsgamesdb');
+//Singleton property
+    private static $database_handler = null;
+//Constructors to innitialize the Server property 
+    private function __construct()
+    {
+        $this->servername = "localhost";
+        $this->dBusername = "root";
+        $this->dBPassword = "";
+    }
+    //Method to return an instance of the DataBaseHandler class
+    public static function DBConnection()
+    {
+        if (self::$database_handler == null){
+            self::$database_handler = new DataBaseHandler();
+            return self::$database_handler;
+        }
+        else 
+            return self::$database_handler;
+    }
+    //create a instantiating mysqli object and setting the DBNmae property if the connection is done
+    public function DbOpenConnection() {
+        $conn = new mysqli($this->servername, $this->dBusername, $this->dBPassword);
+        
+        if ($conn->connect_error){
+            return FALSE;
+        }
 
-    //create table  player if it does not exist
+        $this->DBNmae = $conn;
+        return true;
+    }
 
-    $conn->query("CREATE TABLE IF NOT EXISTS player( 
-        fName VARCHAR(50) NOT NULL, 
-        lName VARCHAR(50) NOT NULL, 
-        userName VARCHAR(20) NOT NULL UNIQUE,
-        registrationTime DATETIME NOT NULL,
-        id VARCHAR(200) GENERATED ALWAYS AS (CONCAT(UPPER(LEFT(fName,2)),UPPER(LEFT(lName,2)),UPPER(LEFT(userName,3)),CAST(registrationTime AS SIGNED))),
-        registrationOrder INTEGER AUTO_INCREMENT,
-        PRIMARY KEY (registrationOrder)
-    )CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
-    ");
-        //create table  authenticator if it does not exist
-
-    $conn->query(" CREATE TABLE IF NOT EXISTS authenticator(   
-        passCode VARCHAR(255) NOT NULL,
-        registrationOrder INTEGER, 
-        FOREIGN KEY (registrationOrder) REFERENCES player(registrationOrder)
-    )CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
-    ");
-        //create table  score if it does not exist
-
-    $conn->query(" CREATE TABLE IF NOT EXISTS score( 
-        scoreTime DATETIME NOT NULL, 
-        result ENUM('success', 'failure', 'incomplete'),
-        livesUsed INTEGER NOT NULL,
-        registrationOrder INTEGER, 
-        FOREIGN KEY (registrationOrder) REFERENCES player(registrationOrder)
-    )CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
-    ");
-    
-        //create view  history if it does not exist
-
-    $conn->query(" CREATE VIEW IF NOT EXISTS history  AS
-    SELECT s.scoreTime, p.id, p.fName, p.lName, s.result, s.livesUsed 
-    FROM player p, score s
-    WHERE p.registrationOrder = s.registrationOrder;
-    ");
-    
+// Method to connect to a specified database
+    function connectToDB( $database){
+        //Attempt to connect to the Database
+        $connDB = mysqli_select_db($this->DBNmae, $database);
+        //If connection to the Database failed save the system error message 
+        if ($connDB === FALSE) {
+            return FALSE;
+        }
+            return TRUE;
+        }
+ // Method to get the value of the databaseName property
+    public function getDataBase() {
+        return $this->DBNmae;
+    }
 }
