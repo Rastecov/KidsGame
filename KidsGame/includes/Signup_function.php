@@ -1,7 +1,7 @@
 <?php
 //add the file name database_handler.php
 // this file contains the connection to the database
-require_once 'database_handler.php';
+require 'database_handler.php';
 
 // check if the user submitted the signup form
 if (isset($_POST['signup-submit'])) {
