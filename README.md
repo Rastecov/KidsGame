@@ -28,6 +28,6 @@ A set of 6 different numbers generated randomly is shown, and you must use the f
 
 Meet the Team
 Boko Eraste Yacov Jesumen - Lead Developer<br>
-Voskerchyan Gagik - Graphics Designer
-Weixuan Li - Database administrator
+Voskerchyan Gagik - Graphics Designer<br>
+Weixuan Li - Database administrator<br>
 Wang Yucheng - Game Level Designer
