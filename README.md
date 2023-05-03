@@ -27,7 +27,7 @@ Game Level 6: Identify the minimum and the maximum numbers from a set of numbers
 A set of 6 different numbers generated randomly is shown, and you must use the form available to write the minimum number and the maximum number (from the order 0 to 100).
 
 Meet the Team
-Boko Eraste Yacov Jesumen - Lead Developer
+Boko Eraste Yacov Jesumen - Lead Developer<br>
 Voskerchyan Gagik - Graphics Designer
 Weixuan Li - Database administrator
 Wang Yucheng - Game Level Designer
