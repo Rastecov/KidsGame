@@ -1,4 +1,4 @@
-Game Overview<br>
+<h1>Game Overview<h1><br>
 KidsGame consists of six different levels that challenge your ability to order numbers and letters in ascending and descending order, identify the first and last letters from a set of letters, and identify the minimum and maximum numbers from a set of numbers. Each level has its own form that allows players to play with numbers from 0 to 100 and alphabet letters from a to z, lower case or/and uppercase.
 
 To play the game, simply submit the form for each level with the correct order of numbers or letters. If you win the game, a button "Go to the Next Level" will appear for you to proceed to the next level. However, if you lose the game, a button "Try Again this Level" will appear for you to retry the current level.
