@@ -1,33 +1,56 @@
-<h1>Game Overview<h1><br>
-KidsGame consists of six different levels that challenge your ability to order numbers and letters in ascending and descending order, identify the first and last letters from a set of letters, and identify the minimum and maximum numbers from a set of numbers. Each level has its own form that allows players to play with numbers from 0 to 100 and alphabet letters from a to z, lower case or/and uppercase.
+<h1>Game Overview</h1><br>
+<p>
+  KidsGame consists of six different levels that challenge your ability to order numbers and letters in ascending and descending order, identify the first and last letters from a set of letters, and identify the minimum and maximum numbers from a set of numbers. Each level has its own form that allows players to play with numbers from 0 to 100 and alphabet letters from a to z, lowercase or/and uppercase.
+</p>
 
-To play the game, simply submit the form for each level with the correct order of numbers or letters. If you win the game, a button "Go to the Next Level" will appear for you to proceed to the next level. However, if you lose the game, a button "Try Again this Level" will appear for you to retry the current level.
+<p>
+  To play the game, simply submit the form for each level with the correct order of numbers or letters. If you win the game, a button "Go to the Next Level" will appear for you to proceed to the next level. However, if you lose the game, a button "Try Again this Level" will appear for you to retry the current level.
+</p>
 
-If it's not the last level and you win the game, you will see a result message with a button "Sign Out" and "Stop this Session" to end your playing session. If it's the last level and you win the game, congratulations! You will see a result message with a button "Play Again", "Home Page", and "Sign Out" to end your playing session.
+<p>
+  If it's not the last level and you win the game, you will see a result message with a button "Sign Out" and "Stop this Session" to end your playing session. If it's the last level and you win the game, congratulations! You will see a result message with a button "Play Again", "Home Page", and "Sign Out" to end your playing session.
+</p>
 
-Please keep in mind that you only have six lives for each playing session. If you use up all your lives and fail to win the game, it's game over.
+<p>
+  Please keep in mind that you only have six lives for each playing session. If you use up all your lives and fail to win the game, it's game over.
+</p>
 
-Gameplay
-Game Level 1: Order letters in ascending order
-A set of 6 different letters generated randomly is shown, and you must use the form available to write them in ascending order (from a to z).
+<h2>Gameplay</h2>
 
-Game Level 2: Order letters in descending order
-A set of 6 different letters generated randomly is shown, and you must use the form available to write them in descending order (from z to a).
+<p>
+  <strong>Game Level 1: Order letters in ascending order</strong><br>
+  A set of 6 different letters generated randomly is shown, and you must use the form available to write them in ascending order (from a to z).
+</p>
 
-Game Level 3: Order numbers in ascending order
-A set of 6 different numbers generated randomly is shown, and you must use the form available to write them in ascending order (from 0 to 100).
+<p>
+  <strong>Game Level 2: Order letters in descending order</strong><br>
+  A set of 6 different letters generated randomly is shown, and you must use the form available to write them in descending order (from z to a).
+</p>
 
-Game Level 4: Order numbers in descending order
-A set of 6 different numbers generated randomly is shown, and you must use the form available to write them in descending order (from 100 to 0).
+<p>
+  <strong>Game Level 3: Order numbers in ascending order</strong><br>
+  A set of 6 different numbers generated randomly is shown, and you must use the form available to write them in ascending order (from 0 to 100).
+</p>
 
-Game Level 5: Identify first and last letters from a set of letters
-A set of 6 different letters generated randomly is shown, and you must use the form available to write the first letter and the last letter (from the order a to z).
+<p>
+  <strong>Game Level 4: Order numbers in descending order</strong><br>
+  A set of 6 different numbers generated randomly is shown, and you must use the form available to write them in descending order (from 100 to 0).
+</p>
 
-Game Level 6: Identify the minimum and the maximum numbers from a set of numbers
-A set of 6 different numbers generated randomly is shown, and you must use the form available to write the minimum number and the maximum number (from the order 0 to 100).
+<p>
+  <strong>Game Level 5: Identify first and last letters from a set of letters</strong><br>
+  A set of 6 different letters generated randomly is shown, and you must use the form available to write the first letter and the last letter (from the order a to z).
+</p>
 
-Meet the Team:
-<br>Boko Eraste Yacov Jesumen - Lead Developer<br>
-Voskerchyan Gagik - Graphics Designer<br>
-Weixuan Li - Database administrator<br>
-Wang Yucheng - Game Level Designer
+<p>
+  <strong>Game Level 6: Identify the minimum and the maximum numbers from a set of numbers</strong><br>
+  A set of 6 different numbers generated randomly is shown, and you must use the form available to write the minimum number
+</p>
+<h2>Meet the Team:</h2>
+<br>
+<p>
+  Boko Eraste Yacov Jesumen - Lead Developer<br>
+  Voskerchyan Gagik - Graphics Designer<br>
+  Weixuan Li - Database administrator<br>
+  Wang Yucheng - Game Level Designer
+</p>
